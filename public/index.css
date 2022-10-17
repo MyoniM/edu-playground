@@ -1,0 +1,145 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #c9c9c9;
+  background-image: url('https://www.transparenttextures.com/patterns/3px-tile.png');
+}
+
+.logo {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 5px;
+  padding: 0 10px;
+  width: 70%;
+  height: 60px;
+  margin: 10px auto;
+  display: flex;
+  align-items: center;
+  color: rgb(100, 100, 100);
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.logo h1 {
+  margin: 0;
+}
+
+.wrapper {
+  width: 70%;
+  margin: 10px auto;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.language {
+  display: flex;
+  gap: 20px;
+}
+
+.editor {
+  background-color: #fcfcfc;
+  height: 50vh;
+  width: 50%;
+}
+
+.output {
+  max-height: 50vh;
+  width: 50%;
+}
+
+.result {
+  background-color: #000;
+  height: calc(50vh - 70px);
+  width: calc(100% - 20px);
+  padding: 10px;
+  color: white;
+
+  resize: none;
+  border: none;
+  outline: none;
+  overflow: auto;
+
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.tab-controller {
+  display: flex;
+  height: 40px;
+  margin-bottom: 5px;
+}
+
+.controller {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.controller:hover {
+  cursor: pointer;
+  background-color: rgb(206, 206, 206);
+}
+
+.selected-controller {
+  background-color: rgb(206, 206, 206);
+}
+
+.tab-body {
+  background-color: #f0f0f0;
+  height: calc(50vh - 45px);
+  width: 100%;
+  overflow: auto;
+}
+
+.button-25 {
+  background-color: #36a9ae;
+  background-image: linear-gradient(#37adb2, #329ca0);
+  border: 1px solid #2a8387;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0 1px 1px;
+  color: #ffffff;
+  cursor: pointer;
+  display: block;
+  font-family: -apple-system, '.SFNSDisplay-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  margin: 0;
+  margin-left: auto;
+  outline: 0;
+  padding: 11px 15px 12px;
+  text-align: center;
+  transition: box-shadow 0.05s ease-in-out, opacity 0.05s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-25:hover {
+  box-shadow: rgba(255, 255, 255, 0.3) 0 0 2px inset, rgba(0, 0, 0, 0.4) 0 1px 2px;
+  text-decoration: none;
+  transition-duration: 0.15s, 0.15s;
+}
+
+.button-25:active {
+  box-shadow: rgba(0, 0, 0, 0.15) 0 2px 4px inset, rgba(0, 0, 0, 0.4) 0 1px 1px;
+}
+
+.button-25:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.button-25:disabled:active {
+  pointer-events: none;
+}
+
+.button-25:disabled:hover {
+  box-shadow: none;
+}
