@@ -1,70 +1,129 @@
-# Getting Started with Create React App
+<img width="200" alt="logo" src="https://user-images.githubusercontent.com/61096394/196056816-b056b3b5-7cb5-49bf-9ce0-fecf28f23a1d.png"><br/>
+# edu - Amharic programming language! 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+edu is a minimal, transpiled programming language with not so easy syntax :P. edu is transpiled into `javascript`. <br/>
 
-## Available Scripts
+If you want to try it out, here is a [playground](https://edu-playground.vercel.app/) <br/>
 
-In the project directory, you can run:
+## How does edu work? <br/>
+![edu-process](https://user-images.githubusercontent.com/61096394/196007766-c978b637-182b-4278-9dbe-6eb487cf42a6.PNG)
 
-### `npm start`
+- `1) Lexer/ Tokenizer` <br/>
+  - A tokenizer splits the input into a stream of larger units called tokens. This happens in a separate stage before parsing. <br/>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- `2) Parser` <br/>
+  - Parsers turn strings of characters into meaningful data structures (like a JSON object). The returned <br/> 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- `3) Generator` <br/>
+  - Generator takes the parsed object and changes it to the desired language(Javascript) which in turn will be executed to generate a machine code. 
+  
+## Features <br/>
+- null
+- variables
+- boolean
+- numbers
+- strings
+- array
+- if condition
+- loop
+- lambda functions
+- comments
 
-### `npm test`
+## Examples <br/>
+`Null` <br/>
+```js
+  ባዶ := null
+  //transpiled version of the code
+  var ባዶ = null
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`Boolean` <br/>
+```js
+  ቡሊያን := እውነት
+  //transpiled version of the code
+  var ቡሊያን = true
+```
 
-### `npm run build`
+`Number` <br/>
+```js
+  ቁጥር := 100
+  //transpiled version of the code
+  var ቁጥር = 100
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`String` <br/>
+```js
+  ቁምፊዎች := "ደብዳቤ"
+  //transpiled version of the code
+  var ቁምፊዎች = "ደብዳቤ"
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`Array` <br/>
+```js
+  ድርድር := [1 "ሁለት" እውነት]
+  //transpiled version of the code
+  var ድርድር = [1, "ሁለት", true]
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`If condition` <br/>
+```js
+  መልስ := ከሆነ(እውነት 
+              () => "እውነት ነው"
+              () => "ውሸት ነው"
+          )
+  //transpiled version of the code
+  var መልስ = ከሆነ( true, function (  ) {
+    return "እውነት ነው"
+  }, function (  ) {
+    return "ውሸት ነው"
+  } )
+```
 
-### `npm run eject`
+`Loop` <br/>
+```js
+  ለእያንዳንዱ(ክልል(0 6) አውጣ)
+  //transpiled version of the code
+  ለእያንዳንዱ( ክልል( 0, 6 ), አውጣ )
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+`Lambda function` <br/>
+```js
+  ተግባር := () => "ይሰራል"
+  //transpiled version of the code
+  var ተግባር = function (  ) {
+    return "ይሰራል"
+  }
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`A working fibonacci sequence example` <br/>
+```js
+  ፋይቦናቺ := (n) => {
+    ከሆነ(ያንሳል(n 2)
+        () => n
+        () =>
+            ከሆነ(እኩል_ነው(n 2)
+                () => 1
+                () =>
+                    ደምር(
+                        ፋይቦናቺ(ቀንስ(n 1))
+                        ፋይቦናቺ(ቀንስ(n 2))
+                    )
+            )
+        )
+  }
+  //transpiled version of the code
+  var ፋይቦናቺ = function ( n ) {
+    return ከሆነ( ያንሳል( n, 2 ), function (  ) {
+      return n
+    }, function (  ) {
+      return ከሆነ( እኩል_ነው( n, 2 ), function (  ) {
+        return 1
+      }, function (  ) {
+        return ደምር( ፋይቦናቺ( ቀንስ( n, 1 ) ), ፋይቦናቺ( ቀንስ( n, 2 ) ) )
+      } )
+    } )
+  }
+  
+  አውጣ(ፋይቦናቺ(10)) // 55 <= correct answer
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
