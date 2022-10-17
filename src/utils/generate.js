@@ -5,8 +5,6 @@ async function generateJs(astString) {
 }
 
 function generate(ast) {
-  console.log('Generating js code');
-
   const blocs = [];
   for (let node of ast) {
     const bloc = generateJsFromExpr(node);

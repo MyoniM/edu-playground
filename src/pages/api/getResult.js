@@ -1,42 +1,26 @@
-const util = require('node:util');
-const fs = require('mz/fs');
-const path = require('path');
-const exec = util.promisify(require('node:child_process').exec);
-const { v4: uuid } = require('uuid');
-
-const dirCodes = path.join(__dirname, 'codes');
-
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     const { generatedJs } = req.body;
 
-    const filepath = await generateFile(generatedJs);
-    const result = await myExec(filepath);
-    await fs.unlink(filepath);
-    
-    return res.status(200).json(result);
-  }
-  res.status(404).send({});
-}
-
-async function myExec(filepath) {
-  return new Promise((resolve, reject) => {
-    exec(`node ${filepath}`, (error, stdout, stderr) => {
-      stderr && resolve({ data: stderr, stderr: true });
-      error && reject({ error, stderr });
-      resolve({ data: stdout, stderr: false });
+    const response = await fetch('https://api.jdoodle.com/v1/execute', {
+      method: 'POST',
+      headers: { 'Content-type': 'application/json' },
+      body: JSON.stringify({
+        clientId: process.env.CLIENT_ID,
+        clientSecret: process.env.CLIENT_SECRET,
+        script: generatedJs + '\n' + runtimeFunctions,
+        language: 'nodejs',
+        versionIndex: 4,
+      }),
     });
-  });
+    const data = await response.json();
+    console.log(data);
+    if (response.status === 200) {
+      return res.status(200).json({ data: data.output, isError: false });
+    }
+    return res.status(400).json({ data: 'Something went wrong!', isError: true });
+  }
 }
-
-const generateFile = async (document) => {
-  if (!fs.existsSync(dirCodes)) await fs.mkdir(dirCodes, { recursive: true });
-  const jobId = uuid();
-  const fileName = `${jobId}.${'js'}`;
-  const filePath = path.join(dirCodes, fileName);
-  await fs.writeFile(filePath, document + '\n' + runtimeFunctions);
-  return filePath;
-};
 
 const runtimeFunctions = `
   // These are functions that will be appended to the generated .js file
